@@ -1,4 +1,4 @@
-f = open("input.txt", "r")
+f = open("input_michelle.txt", "r")
 
 maxCalorie = 0
 currCalorie = 0
@@ -19,6 +19,7 @@ for line in f:
 print(maxCalorie)
 
 # second sol
+
 # for line in f:
 #     if (line.strip() == ""):
 #         maxCalorie = max(currCalorie, maxCalorie)
