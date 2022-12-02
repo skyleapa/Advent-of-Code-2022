@@ -1,0 +1,49 @@
+f = open("input_michelle.txt", "r")
+
+
+# part 1 with dict implementation
+answers = {
+    # win
+    "A Y": 8,
+    "B Z": 9,
+    "C X": 7, 
+
+    # draw
+    "A X": 4,
+    "B Y": 5,
+    "C Z": 6, 
+
+    #lose
+    "A Z": 3,
+    "B X": 1,
+    "C Y": 2, 
+}
+
+
+# part 2
+strategy = {
+    "A Y": 4,
+    "B Z": 9,
+    "C X": 2, 
+
+    "A X": 3,
+    "B Y": 5,
+    "C Z": 7, 
+
+    "A Z": 8,
+    "B X": 1,
+    "C Y": 6, 
+}
+
+strategyPts = 0
+
+totalPts = 0
+
+for line in f:
+    hmm = line.strip()
+    totalPts += answers[hmm]
+    strategyPts += strategy[hmm]
+
+print("part 1 answer is " + str(totalPts))
+
+print("part 2 answer is " + str(strategyPts))
