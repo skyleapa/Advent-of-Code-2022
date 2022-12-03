@@ -1,4 +1,4 @@
-f = open("input_mich.txt", "r")
+f = open("input.txt", "r")
 
 prioritySum = 0
 
