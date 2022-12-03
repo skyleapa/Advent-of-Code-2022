@@ -1,5 +1,7 @@
 f = open("input_michelle.txt", "r")
 
+# O(n) solution
+
 maxCalorie = 0
 currCalorie = 0
 

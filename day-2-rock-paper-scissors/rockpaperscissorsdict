@@ -1,7 +1,7 @@
 f = open("input_michelle.txt", "r")
 
-
-# part 1 with dict implementation
+# O(n) solution
+# part 1 with dict implementation 
 answers = {
     # win
     "A Y": 8,
@@ -18,7 +18,6 @@ answers = {
     "B X": 1,
     "C Y": 2, 
 }
-
 
 # part 2
 strategy = {
