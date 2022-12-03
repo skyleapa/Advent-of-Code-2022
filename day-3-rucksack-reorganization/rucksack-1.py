@@ -1,3 +1,5 @@
+# day 3 part 1
+
 f = open("input.txt", "r")
 
 prioritySum = 0
