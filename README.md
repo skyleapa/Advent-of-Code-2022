@@ -9,7 +9,7 @@
 ## Day 3 - Rucksack Reorganization
 * `O(n)`
 * Immediately jumped to a hashmap/dict solution, learned about ord() in python and ASCII characters. Getting used to using key/values for solutions. Could have come up with a better way to discern between 3 lines rather than an accumulator.?
-## Day 4
+## Day 4 - Camp Cleanup
 * `O(n)` *chef's kiss*
 * Thinking of arithmetic connections with the ranges, evaluated based on 3 cases in which pairs would overlap. Adjusted conditions for part 2
 * Part 1:
