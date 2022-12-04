@@ -11,9 +11,9 @@ pairsContained = 0
 for line in f:
     first_half = line.split(',')[0]
     second_half = line.split(',')[1]
-    a = first_half.split()[0]
+    a = first_half.split("-")[0]
     b = first_half.split("-")[1]
-    c = first_half.split
+    c = first_half.split()
     d = 
     
     if a == c or b == d:
