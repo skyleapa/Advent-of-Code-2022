@@ -1,5 +1,7 @@
 f = open("input_darryl.txt", "r")
 
+# O(n) solution
+
 # elf: A - rock; B - paper; C - scissors
 # player: X - rock; Y - paper; Z - scissors
 # points: 1 - rock; 2 - paper; 3 - scissors; 0 - lose; 3 - draw; 6 - win

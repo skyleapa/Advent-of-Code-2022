@@ -2,8 +2,6 @@ f = open("input_darryl.txt", "r")
 
 # O(n) solution
 
-# part 1
-
 # logic: for example with 2-8,3-7, evaluate as a-b,c-d
 # get the values a, b, c, d. 
 # if a == c or b == d, pairsContained++
@@ -22,11 +20,7 @@ for line in f:
     
     if a == c or b == d:
         pairsContained += 1
-    elif a < c:
-        if d < b:
-            pairsContained += 1
-    elif a > c:
-        if d > b:
+    elif c - b > 0:
             pairsContained += 1
 
 print(pairsContained)

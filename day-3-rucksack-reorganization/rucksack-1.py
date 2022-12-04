@@ -1,5 +1,7 @@
 # day 3 part 1
 
+# O(n) solution
+
 f = open("input.txt", "r")
 
 prioritySum = 0
