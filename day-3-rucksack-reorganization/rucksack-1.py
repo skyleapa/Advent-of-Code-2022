@@ -32,6 +32,6 @@ for line in f:
             print(str(c) + " : " + str(hashmap[c]))
             prioritySum += hashmap[c]
             break
-    
+
 print(prioritySum)
 
