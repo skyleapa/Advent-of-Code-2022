@@ -1,7 +1,7 @@
 import re
 
 # part 1
-# runtime?
+# O(n)
 
 f = open("input_michelle.txt", "r")
 
