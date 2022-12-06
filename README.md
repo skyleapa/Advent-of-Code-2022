@@ -12,8 +12,8 @@
 ## Day 4 - Camp Cleanup
 * `O(n)` *chef's kiss*
 * Thinking of arithmetic connections with the ranges, evaluated based on 3 cases in which pairs would overlap. Adjusted conditions for part 2
-* Part 1:
 Let `a-b`,`c-d`
+* Part 1:
 if `a == c` or `b == d`, `pairsContained++`
 if `a < c`, then if `d < b`, `pairsContained++`
 if `a > c`, then if `d > b`, `pairsContained++`
