@@ -1,16 +1,25 @@
-f = open("input_michelle.txt", "r")
+f = open("input_test.txt", "r")
 
 for line in f:
-    for c in line:
-        position = 0
-        needSleep = 0
-        wantRamen = []
-        if needSleep < 4:
-            if (line[needSleep] not in wantRamen):
-                wantRamen.append(line[needSleep])
-                needSleep += 1
+    potentialMarker = []
+    quantity = 0
+    for index, c in enumerate(line):
+        # load in first 4 values
+        if quantity < 4:
+            if c not in potentialMarker:
+                potentialMarker.append(c)
+                quantity += 1
             else:
-                print()
-        else:
-            wantRamen = []
-            needSleep = 0
+                for x in range(0, potentialMarker.index(c)):
+                    potentialMarker.pop(0)
+            print(potentialMarker)
+        # else:
+        #     print(potentialMarker)
+        #     print(c)
+        #     potentialMarker.pop(0)
+            
+        #     if c in potentialMarker:
+        #         potentialMarker.append(c)
+        #     else:
+        #         print(index+1)
+        #         break
