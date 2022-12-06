@@ -17,7 +17,7 @@ def stackMover(amount, startIndex, endIndex):
     # stackHolder[endIndex].insert(0, stackHolder[startIndex][1])
 
     itVar = amount
-    if itVar > 0:
+    while itVar >= 0:
         stackHolder[endIndex].insert(0, stackHolder[startIndex][itVar])
         stackHolder[startIndex].pop(itVar)
         itVar -= 1
@@ -43,7 +43,7 @@ for line in f:
         elements = getElements(line)
         print(elements)
         print(stackHolder)
-        stackMover(elements[0], elements[1] - 1, elements[2] - 1)
+        stackMover(elements[0] - 1, elements[1] - 1, elements[2] - 1)
     # so we can access the txt file after 2 lines
     else:
         stopper += 1
