@@ -1,31 +1,33 @@
-# 8 rows denoting the max length of the stack
+import re
 
-# stack one is col 1
-# two is 5
-# three is 9
-# four is 13
-# five is 17
-# six is 21
-# seven is 25
-# eight is 29
-# nine is 33
-
-f = open("input_test.txt", "r") # -> CMZ
+f = open("input_michelle.txt", "r")
 
 stackHolder = [[], [], [], [], [], [], [], [], []]
-currCol = 1
 
-for index, line in enumerate(f):
-    # the row
-    if index <= 3:
-        # each character
-        for i, c in enumerate(line):
-            if i - 1 == currCol:
-                if not c == ' ':
-                    print(c)
-                    stackHolder[index].append(line[currCol])
-            currCol += 4
-        currCol = 0
+stopper = 0
 
-print(stackHolder)
+def getElements(line):
+    return [int(s) for s in re.findall(r'\b\d+\b', line)]
+
+def stackMover(amount, startIndex, endIndex):
+    for x in range(0, amount):
+        
+
+for line in f:
+    # building stacks
+    index = 0
+    if stopper < 8:
+        # by column
+        for x in range(1, 37, 4):
+            if (line[x] != ' '):
+                stackHolder[index].append(line[x])
+                index += 1
+        stopper += 1
+    # working with move to from instructions
+    elif stopper == 10:
+        elements = getElements(line)
+        stackMover(elements[0], elements[1], elements[2])
+    # so we can access the txt file after 2 lines
+    else:
+        stopper += 1
 
