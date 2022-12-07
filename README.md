@@ -26,6 +26,8 @@ If `a > c`, then if `d <= a`, `pairsContained++`
 * The most challenging day yet! I'm especially proud to have completed this entirely on my own in an unfamiliar language :) The objective itself was simple, but coding was complicated in parsing the text file data and looping through the correct indexes
 * Learned about python regex, manipulating arrays, using python for loops, thinking about how to access extracting necessary data from txt file. Manipulated stackHolder array to modify stacks.
 * For part 2, modified stackMover to use a while loop that kept track of the index position and iterated upwards
-
+## Day 5 - Supply Stacks
+* `O(n)`
+* A more clean solution than I expected. Had an oversight on removing the first element rather than all elements leading to the duplicate index. Part 2 was a variation of part 1 where checks when the length of the array is equal to the filled values and dictates a correct solution
 
 
