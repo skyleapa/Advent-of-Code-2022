@@ -1,25 +1,20 @@
-f = open("input_test.txt", "r")
+f = open("input_michelle.txt", "r")
+
+# part 1
+# O(n)
 
 for line in f:
-    potentialMarker = []
-    quantity = 0
+    elementArray = []
     for index, c in enumerate(line):
-        # load in first 4 values
-        if quantity < 4:
-            if c not in potentialMarker:
-                potentialMarker.append(c)
-                quantity += 1
+        if len(elementArray) != 4:
+            if c not in elementArray:
+                elementArray.append(c)
             else:
-                for x in range(0, potentialMarker.index(c)):
-                    potentialMarker.pop(0)
-            print(potentialMarker)
-        # else:
-        #     print(potentialMarker)
-        #     print(c)
-        #     potentialMarker.pop(0)
-            
-        #     if c in potentialMarker:
-        #         potentialMarker.append(c)
-        #     else:
-        #         print(index+1)
-        #         break
+                for x in range(0, elementArray.index(c) + 1):
+                    elementArray.pop(0)
+                elementArray.append(c)
+        # once elementArray contains 4 valid non duplicate elements, produce the index
+        else:
+            print(elementArray)
+            print(index)
+            break

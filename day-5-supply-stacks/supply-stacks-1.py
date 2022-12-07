@@ -32,7 +32,7 @@ for line in f:
         stackMover(elements[0], elements[1] - 1, elements[2] - 1)
     # so we can access the txt file after 2 lines
     else:
-        stopper += 1
+        stopper += 2
 
 # final solution
 for x in range(0, 9):
