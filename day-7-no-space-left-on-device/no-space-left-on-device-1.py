@@ -10,4 +10,6 @@ f = open("input_darryl.txt", "r")
 directTree = []
 
 for line in f:
-    
+    if ('$' in line):
+        if ('cd' in line):
+            
