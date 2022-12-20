@@ -29,5 +29,7 @@ If `a > c`, then if `d <= a`, `pairsContained++`
 ## Day 6 - Tuning Trouble
 * `O(n)`
 * A more clean solution than I expected. Had an oversight on removing the first element rather than all elements leading to the duplicate index. Part 2 was a variation of part 1 where checks when the length of the array is equal to the filled values and dictates a correct solution
+## Day 7 - No Space Left On Device
+* Watched a youtube video going through the code to this problem
 
 
