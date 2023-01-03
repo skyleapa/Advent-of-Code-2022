@@ -12,9 +12,11 @@
 # for line in f:
 #     if ('$' in line):
 #         if ('cd' in line):
+
 with open("input_michelle.txt") as file:
     commands = file.readlines()
 
+# a dictionary
 dirs = {"/home":0}
 path = "/home"
 
