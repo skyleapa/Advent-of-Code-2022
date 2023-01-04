@@ -1,4 +1,5 @@
-"200200221023111313131033314121142013103432145142351212334232423210101340410243413011333312111010010",
+const treeMap = [
+    "200200221023111313131033314121142013103432145142351212334232423210101340410243413011333312111010010",
 "021002023301222221234134021422342024344555521535143232341414552024224120114233210330203002020100112",
 "120000123021210023111321143114331115334535223455511513445233523154411102203411040133312002213001021",
 "110211312303200204232110124204135453554533435152342542252215415141133330323032234114310011301232202",
@@ -97,3 +98,161 @@
 "010202021330012103042021024434411545123253214353525251521434235541535344240243403200122322133122101",
 "121102231211003113342040440404003344542241345133131133414435235243325441120032344431223311313111221",
 "011210032333020312123124101444102341443212553521355222414135533333310320012002223342012031112321112"
+];
+
+const treeGrid = treeMap.map(row => row.split(""));
+const isVisible = [];
+
+const visibilityDistanceTowardsLeft = [];
+const visibilityDistanceTowardsRight = [];
+const visibilityDistanceTowardsTop = [];
+const visibilityDistanceTowardsBottom = [];
+
+const totalRows = treeGrid.length;
+const totalCols = treeGrid[0].length;
+
+function findContinuousSmallerTreesInDirection(currentRow, currentCol, direction) {
+    const currentTreeSize = treeGrid[currentRow][currentCol];
+
+    let count = 0;
+    if (direction === 0) { // Towards Bottom
+        if (currentRow == totalRows - 1) {
+            return 0;
+        }
+        for (let row = currentRow + 1; row < totalRows; row++) {
+            count++;
+            if (currentTreeSize <= treeGrid[row][currentCol]) {
+                break;
+            }
+        }
+    } else if (direction === 1) { // Towards Top
+        if (currentRow == 0) {
+            return 0;
+        }
+        for (let row = currentRow - 1; row >= 0; row--) {
+            count++;
+            if (currentTreeSize <= treeGrid[row][currentCol]) {
+                break;
+            }
+        }
+    } else if (direction === 2) { // Towards Right
+        if (currentCol == totalCols - 1) {
+            return 0;
+        }
+        for (let col = currentCol + 1; col < totalCols; col++) {
+            count++;
+            if (currentTreeSize <= treeGrid[currentRow][col]) {
+                break;
+            }
+        }
+        
+    } else { // Towards Left
+        if (currentCol == 0) {
+            return 0;
+        }
+        for (let col = currentCol - 1; col >= 0; col--) {
+            count++;
+            if (currentTreeSize <= treeGrid[currentRow][col]) {
+                break;
+            }
+        }
+    }
+    return count;
+}
+
+for (let row = 0; row < totalRows; row++) {
+    const isVisibleRowData = [];
+    const visibilityDistanceTowardsLeftRowData = [];
+    const visibilityDistanceTowardsRightRowData = [];
+    const visibilityDistanceTowardsTopRowData = [];
+    const visibilityDistanceTowardsBottomRowData = [];
+    for (let col = 0; col < totalCols; col++) {
+        visibilityDistanceTowardsLeftRowData.push(0);
+        visibilityDistanceTowardsRightRowData.push(0);
+        visibilityDistanceTowardsTopRowData.push(0);
+        visibilityDistanceTowardsBottomRowData.push(0);
+
+        if (row == 0 || row == totalRows - 1 || col == 0 || col == totalCols -1) {
+            isVisibleRowData.push(1);
+        } else {
+            isVisibleRowData.push(0);
+        }   
+    }
+    visibilityDistanceTowardsLeft.push(visibilityDistanceTowardsLeftRowData);
+    visibilityDistanceTowardsRight.push(visibilityDistanceTowardsRightRowData);
+    visibilityDistanceTowardsTop.push(visibilityDistanceTowardsTopRowData);
+    visibilityDistanceTowardsBottom.push(visibilityDistanceTowardsBottomRowData);
+    isVisible.push(isVisibleRowData);
+}
+
+// Row wise, left to right
+for (let row = 0; row < totalRows; row++) {
+    let maxSoFar = treeGrid[row][0];
+    for (let col = 0; col < totalCols; col++) {
+        if (maxSoFar < treeGrid[row][col]) {
+            isVisible[row][col] = 1;
+            maxSoFar = treeGrid[row][col];
+        }
+    }
+}
+
+// Row wise, right to left
+for (let row = 0; row < totalRows; row++) {
+    let maxSoFar = treeGrid[row][totalCols - 1];
+    for (let col = totalCols - 1; col > 0; col--) {
+        if (maxSoFar < treeGrid[row][col]) {
+            isVisible[row][col] = 1;
+            maxSoFar = treeGrid[row][col];
+        }
+    }
+}
+
+// Col wise, top to bottom
+for (let col = 0; col < totalCols; col++) {
+    let maxSoFar = treeGrid[0][col];
+    for (let row = 0; row < totalRows; row++) {
+        if (maxSoFar < treeGrid[row][col]) {
+            isVisible[row][col] = 1;
+            maxSoFar = treeGrid[row][col];
+        }
+    }
+}
+
+// Col wise, bottom to top
+for (let col = 0; col < totalCols; col++) {
+    let maxSoFar = treeGrid[totalRows - 1][col];
+    for (let row = totalRows - 1; row > 0; row--) {
+        if (maxSoFar < treeGrid[row][col]) {
+            isVisible[row][col] = 1;
+            maxSoFar = treeGrid[row][col];
+        }
+    }
+}
+
+let totalScenicScore = 0;
+for (let row = 0; row < totalRows; row++) {
+    for (let col = 0; col < totalCols; col++) {
+        visibilityDistanceTowardsLeft[row][col] = findContinuousSmallerTreesInDirection(row, col, 3);
+        visibilityDistanceTowardsRight[row][col] = findContinuousSmallerTreesInDirection(row, col, 2);
+        visibilityDistanceTowardsTop[row][col] = findContinuousSmallerTreesInDirection(row, col, 1);
+        visibilityDistanceTowardsBottom[row][col] = findContinuousSmallerTreesInDirection(row, col, 0);
+
+        const newScenicScore = visibilityDistanceTowardsBottom[row][col] * visibilityDistanceTowardsTop[row][col] * visibilityDistanceTowardsRight[row][col] * visibilityDistanceTowardsLeft[row][col];
+        if (newScenicScore > totalScenicScore ) {
+            totalScenicScore = newScenicScore;
+        }
+    }
+}
+
+let total = 0;
+for (let row = 0; row < totalRows; row++) {
+    for (let col = 0; col < totalCols; col++) {
+        total += isVisible[row][col];
+    }
+}
+
+
+// Part 1: 1851
+console.log(total);
+// Part 2: 574080
+console.log(totalScenicScore);
